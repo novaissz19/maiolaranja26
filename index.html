@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maio Laranja — Diga Não ao Abuso Sexual Infantil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --laranja: #E8600A;
+      --laranja-claro: #FF8C38;
+      --laranja-palido: #FFF0E5;
+      --laranja-escuro: #B34800;
+      --texto: #1A1209;
+      --texto-sec: #5A3E28;
+      --branco: #FFFAF5;
+      --cinza-claro: #F5EDE4;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--branco);
+      color: var(--texto);
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+      background: rgba(255, 250, 245, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1.5px solid var(--laranja-claro);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--laranja-escuro);
+      letter-spacing: 0.02em;
+    }
+
+    .logo span { color: var(--laranja); }
+
+    nav a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--texto-sec);
+      margin-left: 2rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--laranja); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 5vw 6rem 8vw;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--laranja);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+      width: fit-content;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      font-weight: 900;
+      line-height: 1.08;
+      color: var(--texto);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--laranja);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--texto-sec);
+      max-width: 460px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--laranja);
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      border-radius: 2px;
+    }
+    .btn-primary:hover { background: var(--laranja-escuro); transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--laranja);
+      border: 1.5px solid var(--laranja);
+      padding: 14px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 2px;
+    }
+    .btn-outline:hover { background: var(--laranja-palido); transform: translateY(-2px); }
+
+    .hero-right {
+      background: var(--laranja);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-ilustracao {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+    }
+
+    .hero-numero {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .hero-numero .num {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(6rem, 14vw, 11rem);
+      font-weight: 900;
+      color: rgba(255,255,255, 0.15);
+      line-height: 1;
+      display: block;
+    }
+
+    .hero-numero .mes {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-numero .sub {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    /* decoração fundo hero */
+    .circ {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    .c1 { width: 500px; height: 500px; top: -120px; right: -120px; }
+    .c2 { width: 300px; height: 300px; bottom: -60px; left: -60px; }
+    .c3 { width: 180px; height: 180px; top: 50%; left: 30%; transform: translate(-50%,-50%); }
+
+    /* ── NÚMEROS ── */
+    .numeros {
+      background: var(--laranja-escuro);
+      color: white;
+      padding: 4rem 8vw;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .numeros-item .val {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 900;
+      color: var(--laranja-claro);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .numeros-item p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+
+    /* ── SEÇÃO SOBRE ── */
+    section { padding: 6rem 8vw; }
+
+    .sobre {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .sobre-visual {
+      position: relative;
+      height: 420px;
+    }
+
+    .sobre-caixa {
+      position: absolute;
+      border-radius: 4px;
+    }
+
+    .sc1 {
+      background: var(--laranja);
+      width: 70%;
+      height: 70%;
+      top: 0; left: 0;
+    }
+
+    .sc2 {
+      background: var(--laranja-palido);
+      border: 2px solid var(--laranja-claro);
+      width: 60%;
+      height: 65%;
+      bottom: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 2rem;
+    }
+
+    .sc2 .icone {
+      font-size: 3rem;
+      line-height: 1;
+    }
+
+    .sc2 p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--laranja-escuro);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .sobre-texto h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .sobre-texto p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--texto-sec);
+      margin-bottom: 1.2rem;
+    }
+
+    .destaque-laranja {
+      color: var(--laranja);
+    }
+
+    /* ── SINAIS ── */
+    #sinais { background: var(--cinza-claro); }
+
+    .secao-titulo {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .secao-titulo h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .secao-titulo p {
+      font-size: 1rem;
+      color: var(--texto-sec);
+      font-weight: 300;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .linha-laranja {
+      width: 56px;
+      height: 4px;
+      background: var(--laranja);
+      border-radius: 2px;
+      margin: 1rem auto 0;
+    }
+
+    .grid-sinais {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card-sinal {
+      background: white;
+      border-radius: 6px;
+      border-left: 4px solid var(--laranja);
+      padding: 1.6rem 1.5rem;
+      box-shadow: 0 2px 20px rgba(232,96,10,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card-sinal:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(232,96,10,0.12);
+    }
+
+    .card-sinal .emoji { font-size: 1.6rem; margin-bottom: 0.8rem; display: block; }
+
+    .card-sinal h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--laranja-escuro);
+    }
+
+    .card-sinal p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--texto-sec);
+    }
+
+    /* ── COMO AJUDAR ── */
+    .ajudar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .ajudar-item {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border: 1.5px solid var(--laranja-claro);
+      border-radius: 6px;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ajudar-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--laranja);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .ajudar-item:hover::before { transform: scaleX(1); }
+
+    .ajudar-item:hover {
+      background: var(--laranja-palido);
+      border-color: var(--laranja);
+    }
+
+    .ajudar-item .num-grande {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--laranja);
+      display: block;
+      margin-bottom: 0.8rem;
+      opacity: 0.35;
+    }
+
+    .ajudar-item h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      color: var(--texto);
+    }
+
+    .ajudar-item p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--texto-sec);
+    }
+
+    /* ── DENUNCIA ── */
+    #denuncie {
+      background: var(--laranja);
+      color: white;
+      text-align: center;
+    }
+
+    #denuncie h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    #denuncie p {
+      font-size: 1.05rem;
+      font-weight: 300;
+      opacity: 0.9;
+      line-height: 1.75;
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .disque {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      color: var(--laranja-escuro);
+      border-radius: 4px;
+      padding: 1.2rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .disque:hover { transform: scale(1.04); }
+
+    .disque .tel-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--laranja);
+    }
+
+    .numeros-contato {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .num-contato {
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: 4px;
+      padding: 1.2rem 2rem;
+      text-align: center;
+      min-width: 160px;
+    }
+
+    .num-contato .nr {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: white;
+      display: block;
+    }
+
+    .num-contato span:last-child {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* ── FAQ ── */
+    #faq { background: var(--cinza-claro); }
+
+    .faq-lista { max-width: 720px; margin: 0 auto; }
+
+    details {
+      background: white;
+      border-radius: 4px;
+      border-left: 3px solid var(--laranja);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    summary {
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--texto);
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: '+';
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--laranja);
+      transition: transform 0.2s;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    details p {
+      padding: 0 1.5rem 1.4rem;
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--texto-sec);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--texto);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 3rem 5vw;
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 2;
+    }
+
+    footer strong {
+      color: var(--laranja-claro);
+    }
+
+    /* ── ANIMAÇÕES ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.15s; opacity: 0; }
+    .delay-2 { animation-delay: 0.3s;  opacity: 0; }
+    .delay-3 { animation-delay: 0.45s; opacity: 0; }
+    .delay-4 { animation-delay: 0.6s;  opacity: 0; }
+
+    /* ── RIBBON FLUTUANTE ── */
+    .ribbon {
+      position: fixed;
+      bottom: 1.8rem;
+      right: 1.8rem;
+      z-index: 200;
+      background: var(--laranja);
+      color: white;
+      border-radius: 50%;
+      width: 68px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-decoration: none;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(232,96,10,0.45);
+      transition: transform 0.2s;
+      line-height: 1.4;
+    }
+    .ribbon:hover { transform: scale(1.1); }
+    .ribbon .r-num { font-size: 1.3rem; font-family: 'Playfair Display', serif; font-weight: 900; }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 5rem 6vw 4rem; }
+      .hero-right { height: 300px; }
+      .numeros { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sobre { grid-template-columns: 1fr; gap: 3rem; }
+      .sobre-visual { height: 260px; }
+      section { padding: 4rem 6vw; }
+      nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">Maio <span>Laranja</span></div>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#sinais">Sinais</a>
+      <a href="#ajudar">Como Agir</a>
+      <a href="#denuncie">Denunciar</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0; border:none;">
+    <div class="hero-left">
+      <span class="hero-tag fade-up">Campanha Nacional</span>
+      <h1 class="fade-up delay-1">
+        Proteja<br/>toda <em>criança</em><br/>do abuso.
+      </h1>
+      <p class="fade-up delay-2">
+        O Maio Laranja é a campanha nacional de conscientização e combate
+        ao abuso e à exploração sexual de crianças e adolescentes.
+        Juntos, podemos fazer a diferença.
+      </p>
+      <div class="hero-ctas fade-up delay-3">
+        <a href="#denuncie" class="btn-primary">Denuncie Agora</a>
+        <a href="#sinais" class="btn-outline">Identificar Sinais</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="circ c1"></div>
+      <div class="circ c2"></div>
+      <div class="circ c3"></div>
+      <div class="hero-numero fade-up delay-2">
+        <span class="num">05</span>
+        <div class="mes">Maio</div>
+        <div class="sub">Laranja — Todo dia, todo mês</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS DE IMPACTO -->
+  <div class="numeros">
+    <div class="numeros-item">
+      <span class="val">1 em 4</span>
+      <p>meninas sofre alguma forma de violência sexual antes dos 18 anos no Brasil</p>
+    </div>
+    <div class="numeros-item">
+      <span class="val">86%</span>
+      <p>dos agressores são pessoas conhecidas da criança ou do adolescente</p>
+    </div>
+    <div class="numeros-item">
+      <span class="val">+180 mil</span>
+      <p>denúncias registradas por ano no Disque 100 relacionadas a abuso sexual</p>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="sobre">
+      <div class="sobre-visual">
+        <div class="sobre-caixa sc1"></div>
+        <div class="sobre-caixa sc2">
+          <span class="icone">🔶</span>
+          <p>"O silêncio protege o agressor, não a criança."</p>
+        </div>
+      </div>
+      <div class="sobre-texto">
+        <h2>O que é o <span class="destaque-laranja">Maio Laranja?</span></h2>
+        <p>
+          Criada em 2013, a campanha Maio Laranja surgiu para conscientizar a
+          sociedade sobre o abuso sexual de crianças e adolescentes — um crime
+          que acontece na maioria das vezes em silêncio, dentro de lares e
+          ambientes de confiança.
+        </p>
+        <p>
+          A cor laranja foi escolhida por representar alegria, energia e otimismo:
+          a esperança de que toda criança possa viver livre de violência e medo.
+          Usar a cor é uma forma de dizer que você sabe, que você se importa e
+          que não vai ficar em silêncio.
+        </p>
+        <p>
+          O abuso sexual infantil é crime previsto no <strong>Estatuto da Criança
+          e do Adolescente (ECA)</strong> e no Código Penal Brasileiro. Proteger
+          crianças é dever de toda a sociedade.
+        </p>
+        <a href="#ajudar" class="btn-primary" style="display:inline-block; margin-top:1rem;">Como posso ajudar?</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SINAIS DE ALERTA -->
+  <section id="sinais">
+    <div class="secao-titulo">
+      <h2>Sinais de <span class="destaque-laranja">Alerta</span></h2>
+      <p>Identificar os sinais pode salvar uma vida. Fique atento a mudanças de comportamento em crianças e adolescentes.</p>
+      <div class="linha-laranja"></div>
+    </div>
+    <div class="grid-sinais">
+      <div class="card-sinal">
+        <span class="emoji">😰</span>
+        <h3>Mudanças de comportamento</h3>
+        <p>Agressividade repentina, isolamento, irritabilidade ou regressão de comportamentos (voltar a fazer xixi na cama, chupar dedo).</p>
+      </div>
+      <div class="card-sinal">
+        <span class="emoji">😴</span>
+        <h3>Distúrbios do sono</h3>
+        <p>Pesadelos frequentes, medo de dormir sozinha, insônia ou queda repentina no desempenho escolar sem razão aparente.</p>
+      </div>
+      <div class="card-sinal">
+        <span class="emoji">🚫</span>
+        <h3>Recusa a lugares ou pessoas</h3>
+        <p>Evitar determinado local, adulto ou situação específica que antes era normal, demonstrando medo ou desconforto intenso.</p>
+      </div>
+      <div class="card-sinal">
+        <span class="emoji">🩺</span>
+        <h3>Queixas físicas</h3>
+        <p>Lesões na região genital ou anal, infecções urinárias recorrentes ou outros sinais físicos sem explicação médica clara.</p>
+      </div>
+      <div class="card-sinal">
+        <span class="emoji">💬</span>
+        <h3>Fala ou jogo com conteúdo sexual</h3>
+        <p>Linguagem, desenhos, brinquedos ou jogos com temática sexual inadequada para a idade da criança.</p>
+      </div>
+      <div class="card-sinal">
+        <span class="emoji">😢</span>
+        <h3>Baixa autoestima ou autolesão</h3>
+        <p>Sentimentos de vergonha intensa, culpa excessiva, autolesão ou comportamentos autodestrutivos sem causa aparente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO AGIR -->
+  <section id="ajudar">
+    <div class="secao-titulo">
+      <h2>O que <span class="destaque-laranja">fazer</span> ao suspeitar</h2>
+      <p>Se você desconfiar ou testemunhar um caso de abuso sexual, siga estes passos importantes.</p>
+      <div class="linha-laranja"></div>
+    </div>
+    <div class="ajudar-grid">
+      <div class="ajudar-item">
+        <span class="num-grande">01</span>
+        <h3>Escute com calma</h3>
+        <p>Deixe a criança falar sem interromper. Acredite no que ela diz. Não demonstre choque ou descrença — isso pode silenciá-la.</p>
+      </div>
+      <div class="ajudar-item">
+        <span class="num-grande">02</span>
+        <h3>Não investigue sozinho</h3>
+        <p>Evite interrogar a criança com perguntas detalhadas. Isso pode prejudicar investigações e causar mais sofrimento.</p>
+      </div>
+      <div class="ajudar-item">
+        <span class="num-grande">03</span>
+        <h3>Denuncie imediatamente</h3>
+        <p>Ligue para o Disque 100 (Direitos Humanos) ou Disque 197 (Polícia Civil). A denúncia pode ser anônima.</p>
+      </div>
+      <div class="ajudar-item">
+        <span class="num-grande">04</span>
+        <h3>Leve ao CRAS/CREAS</h3>
+        <p>Os Centros de Assistência Social oferecem atendimento especializado, apoio psicológico e assistência jurídica.</p>
+      </div>
+      <div class="ajudar-item">
+        <span class="num-grande">05</span>
+        <h3>Apoie a criança</h3>
+        <p>Garanta que ela sabe que não tem culpa. O acolhimento e a proteção do adulto de confiança são fundamentais para a recuperação.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DENUNCIE -->
+  <section id="denuncie">
+    <h2>Denuncie. <em style="font-style:normal; font-family:'Playfair Display',serif;">Proteja.</em></h2>
+    <p>
+      A denúncia salva vidas. Os canais são gratuitos, disponíveis 24h por dia
+      e você pode denunciar de forma anônima. Não deixe para depois.
+    </p>
+
+    <div class="numeros-contato">
+      <div class="num-contato">
+        <span class="nr">100</span>
+        <span>Disque Direitos Humanos</span>
+      </div>
+      <div class="num-contato">
+        <span class="nr">197</span>
+        <span>Polícia Civil</span>
+      </div>
+      <div class="num-contato">
+        <span class="nr">190</span>
+        <span>Polícia Militar</span>
+      </div>
+      <div class="num-contato">
+        <span class="nr">180</span>
+        <span>Central da Mulher</span>
+      </div>
+    </div>
+
+    <p style="margin-top:2.5rem; font-size:0.85rem; opacity:0.75; margin-bottom:0;">
+      O sigilo é garantido. Denúncias anônimas são aceitas e investigadas.
+    </p>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="secao-titulo">
+      <h2>Perguntas <span class="destaque-laranja">Frequentes</span></h2>
+      <div class="linha-laranja"></div>
+    </div>
+    <div class="faq-lista">
+      <details>
+        <summary>O que é considerado abuso sexual infantil?</summary>
+        <p>Abuso sexual infantil é qualquer ato de natureza sexual praticado contra uma criança ou adolescente, com ou sem contato físico, incluindo exibicionismo, produção de material pornográfico, aliciamento online e exploração sexual. É crime previsto no ECA (Lei nº 8.069/90) e no Código Penal.</p>
+      </details>
+      <details>
+        <summary>Posso denunciar mesmo sem ter certeza?</summary>
+        <p>Sim. Basta ter suspeita fundada. Os profissionais especializados do Disque 100 são treinados para avaliar cada caso. Você não precisa ter provas concretas — a suspeita já é suficiente para acionar o sistema de proteção. Não denunciar um caso suspeito pode deixar a criança em perigo.</p>
+      </details>
+      <details>
+        <summary>Minha denúncia pode ser anônima?</summary>
+        <p>Sim. Os canais como o Disque 100 aceitam denúncias anônimas. O sigilo do denunciante é garantido por lei. Você não precisa se identificar para ajudar uma criança.</p>
+      </details>
+      <details>
+        <summary>O agressor é sempre um desconhecido?</summary>
+        <p>Não. Estatísticas mostram que em cerca de 86% dos casos, o agressor é alguém conhecido da família — pode ser um familiar, amigo próximo, vizinho ou responsável. Por isso é importante estar atento ao comportamento das crianças com adultos do seu convívio.</p>
+      </details>
+      <details>
+        <summary>Como prevenir o abuso sexual de crianças?</summary>
+        <p>A prevenção passa pela educação. Ensine as crianças sobre o próprio corpo, sobre limites ("partes privadas"), que segredos que as machucam não precisam ser guardados e que podem falar com adultos de confiança. Crie um ambiente seguro onde a criança se sinta livre para relatar qualquer situação desconfortável sem medo de punição ou descrença.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Maio Laranja</strong> — Campanha Nacional de Combate ao Abuso e à Exploração Sexual de Crianças e Adolescentes</p>
+    <p style="margin-top:0.5rem;">Todo dia 18 de maio é o <strong>Dia Nacional de Combate ao Abuso e à Exploração Sexual</strong> — Lei nº 9.970/2000</p>
+    <p style="margin-top:1rem; font-size:0.78rem; opacity:0.5;">Este site tem finalidade educativa e de conscientização social. Não é vinculado a órgão governamental.</p>
+  </footer>
+
+  <!-- BOTÃO FLUTUANTE -->
+  <a href="tel:100" class="ribbon" title="Disque 100">
+    <span class="r-num">100</span>
+    <span>Denuncie</span>
+  </a>
+
+</body>
+</html>
